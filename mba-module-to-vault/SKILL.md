@@ -1,6 +1,6 @@
 ---
 name: mba-module-to-vault
-description: Ingest a single MBA course module folder (PDFs + Moodle screenshots) and produce standardised Obsidian notes in the parallel study vault — one module note plus concept, theorist, and example notes derived strictly from the module's own documents. Use when the user says "ingest this module", "digest module N", "produce vault notes for module", or points to a folder under MBA/<Unit>/Module N and asks for documentation, summary, or Obsidian notes.
+description: Ingest a single MBA course module folder (PDFs + Moodle screenshots) and produce standardised Obsidian notes in the parallel study vault — one module note plus concept, theorist, and example notes derived strictly from the module's own documents. Use when the user says "ingest this module", "digest module N", "produce vault notes for module", or points to a folder under MBA/{Unit}/Module N and asks for documentation, summary, or Obsidian notes.
 ---
 
 # MBA Module → Obsidian Vault
