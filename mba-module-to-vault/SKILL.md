@@ -35,7 +35,7 @@ The flow is **map-reduce**: parallel subagents extract structured data from PDFs
 
 3. **Read every Moodle screenshot in the main agent.** Do not delegate. The screenshots define the module's structure (title, learning outcomes, numbered sub-topics, and which entities the module explicitly introduces) — the main agent needs this context for synthesis in Phase B. Read every screenshot.
 
-4. **Fan out: one subagent per PDF, in parallel.** Spawn one `general-purpose` subagent per PDF in a **single message with multiple Agent tool calls** (so they run concurrently). Each subagent reads its PDF using the strategic page-range approach and returns the YAML extraction defined in [REFERENCE.md](REFERENCE.md) — `## PDF extraction schema`. Use the prompt template in [REFERENCE.md](REFERENCE.md) — `## Subagent prompt template (Phase A)`. Subagents are **read-only** and do not write to the vault.
+4. **Fan out: one subagent per PDF, in parallel.** Spawn one `general-purpose` subagent per PDF in a **single message with multiple Agent tool calls** (so they run concurrently). Each subagent reads its PDF using the strategic page-range approach and returns the YAML extraction defined in [resources/REFERENCE.md](resources/REFERENCE.md) — `## PDF extraction schema`. Use the prompt template in [resources/REFERENCE.md](resources/REFERENCE.md) — `## Subagent prompt template (Phase A)`. Subagents are **read-only** and do not write to the vault.
 
 ### Phase B — Synthesis & write (main agent, single-threaded)
 
@@ -43,9 +43,9 @@ The flow is **map-reduce**: parallel subagents extract structured data from PDFs
 
 6. **Reconcile against the existing vault.** Glob `02 Concepts/`, `03 Theorists/`, `04 Examples/`. For each merged entity, decide: **(a)** already exists → link by `[[wikilink]]` + add backlink; **(b)** new → create from template.
 
-7. **Write the module note.** Copy `Vault/Templates/Module Template.md` to `01 Modules/Module N - <Name>.md`. Populate frontmatter and every section per [REFERENCE.md](REFERENCE.md).
+7. **Write the module note.** Copy `Vault/Templates/Module Template.md` to `01 Modules/Module N - <Name>.md`. Populate frontmatter and every section per [resources/REFERENCE.md](resources/REFERENCE.md).
 
-8. **Create new concept/theorist/example notes.** One file per entity, from the matching template. Frontmatter `module:` arrays must include `"[[Module N - <Name>]]"`. Ground every claim in a specific PDF or screenshot — no outside knowledge. **End each note with a `## Sources` section** listing the filenames (with page numbers where known) — see [REFERENCE.md](REFERENCE.md) for the format.
+8. **Create new concept/theorist/example notes.** One file per entity, from the matching template. Frontmatter `module:` arrays must include `"[[Module N - <Name>]]"`. Ground every claim in a specific PDF or screenshot — no outside knowledge. **End each note with a `## Sources` section** listing the filenames (with page numbers where known) — see [resources/REFERENCE.md](resources/REFERENCE.md) for the format.
 
 9. **Backlink existing notes.** For each concept/theorist/example that already existed, edit ONLY: (a) the frontmatter `module:` array, (b) the "Referenced in" / "Source module(s)" / "Related" bullet list, and (c) the `## Sources` section — append this module's filenames + pages, don't rewrite prior citations. Do not touch any other part of the body.
 
@@ -64,4 +64,4 @@ The flow is **map-reduce**: parallel subagents extract structured data from PDFs
 
 ## Reference
 
-See [REFERENCE.md](REFERENCE.md) for: the exact module-note section list (which extends the bare template), frontmatter conventions, the Module 1 gold-standard example, and PDF-reading heuristics.
+See [resources/REFERENCE.md](resources/REFERENCE.md) for: the exact module-note section list (which extends the bare template), frontmatter conventions, the Module 1 gold-standard example, and PDF-reading heuristics.
